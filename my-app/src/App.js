@@ -1,29 +1,38 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { createElement } from "react";
 
 function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				{/* Декларативный: описываем структуру и свойства компонента */}
-				<img src={logo} className="App-logo" alt="logo" />
-				{/* Декларативный: просто JSX-описание */}
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				{/* Декларативный: ссылка с атрибутами */}
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-				{/* Императивный элемент: явное указание КАК получить год, а не просто ЧТО отобразить.*/}
-				<span>{new Date().getFullYear()}</span>
-			</header>
-		</div>
+	return createElement(
+		"div",
+		{ className: "App" },
+		createElement(
+			"header",
+			{ className: "App-header" },
+			createElement("img", {
+				src: logo,
+				className: "App-logo",
+				alt: "logo",
+			}),
+			createElement(
+				"p",
+				null,
+				"Edit ",
+				createElement("code", null, "src/App.js"),
+				" and save to reload"
+			),
+			createElement(
+				"a",
+				{
+					className: "App-link",
+					href: "https://reactjs.org",
+					target: "_blank",
+					rel: "noopener noreferrer",
+				},
+				"Learn more"
+			),
+			createElement("span", null, `${new Date().getFullYear()}`)
+		)
 	);
 }
 
